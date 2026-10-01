@@ -1,0 +1,31 @@
+name: Build Test Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: |
+          echo "Building project..."
+          python --version
+          echo "Build completed successfully."
+
+      - name: Test
+        run: |
+          echo "Running tests..."
+          pip install pytest
+          pytest
+
+      - name: Deploy
+        run: |
+          echo "Deploying application..."
+          echo "Deployment completed successfully."
